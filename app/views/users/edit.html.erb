@@ -11,14 +11,15 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
       
-      <%# f.label :prefecture %>
-      <%# f.select :prefecture_id%>
-      
+      <%= f.label :area %>
+      <%= f.text_field :area %>
+    
       <%= f.label :url %>
       <%= f.text_field :url %>
       
       <%= f.label :self_introduction %>
-      <%= f.text_area :self_introduction, size: "4x4%>
+      <%= f.text_area :self_introduction, size:"4×4"%>
+
 
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
     <% end %>
