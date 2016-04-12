@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20160409141816) do
 
+  create_table "microposts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
   create_table "user_params", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
