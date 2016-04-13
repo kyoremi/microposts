@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       redirect_to user_path
     else
       render 'edit'
+      flash[:false] = "please retry"
     end
   end
   
@@ -39,9 +40,11 @@ class UsersController < ApplicationController
     #params.require(:user).permit(:name, :email, :password,:password_confirmation, :prefecture_id, :url, :self_introduction)
     params.require(:user).permit(:name, :email, :password,:password_confirmation, :url, :self_introduction, :area)
   end
-
+  
   def set_user
     @user = User.find(params[:id])
+    #@user = User.find_by(params[:session])
+    #@user=logged_in?
   end
   
 end
