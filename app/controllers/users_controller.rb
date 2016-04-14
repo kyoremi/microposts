@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-
   before_action :set_user, only: [:edit, :update, :show]
-
+  before_action :me?, only: [:edit, :update]
   def show 
    @user = User.find(params[:id])
   end
@@ -47,4 +46,9 @@ class UsersController < ApplicationController
     #@user=logged_in?
   end
   
+  def me?
+     if session[:user_id].to_i != params[:id].to_i
+      redirect_to root_path
+     end
+  end 
 end

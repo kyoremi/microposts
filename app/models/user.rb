@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   
   validates :area, length: { maximum: 20 }
-  #validates :url, format: { with: /\A[a-z0-9]+\z/i }, length: { maximum: 50 } 
-  validates :self_introduction, presence: true, length: { maximum: 200 }
+  validates :url, format: /\A#{URI::regexp(%w(http https))}\z/, length: { maximum: 50 } 
+  validates :self_introduction, length: { maximum: 200 }
   has_secure_password
   has_many :microposts
 end
