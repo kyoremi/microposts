@@ -6,9 +6,12 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   
-  validates :area, length: { maximum: 20 }
-  validates :url, format: /\A#{URI::regexp(%w(http https))}\z/, length: { maximum: 50 } 
-  validates :self_introduction, length: { maximum: 200 }
+  validates :area, length: { maximum: 20 }, on: :update
+  validates :url, on: :update, format: { with: /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix,allow_blank: true }
+  #VALID_URL_REGEX = /\A#{URI::regexp(%w(http https))}\z/
+ # validates :url, length: { maximum: 50 }, format: /\A#{URI::regexp(%w(http https))}\z/
+   #               format: { with: VALID_URL_REGEX }
+  validates :self_introduction, length: { maximum: 200 }, on: :update
   has_secure_password
   has_many :microposts
 end

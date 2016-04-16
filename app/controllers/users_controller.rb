@@ -25,11 +25,11 @@ class UsersController < ApplicationController
   def update
     #if @user.update_attributes(user_params)
     if @user.update(user_params)
-      flash[:success] = "Profile has been edited"
+      flash[:success] = "プロフィールを更新しました。"
       redirect_to user_path
     else
       render 'edit'
-      flash[:false] = "please retry"
+      flash[:warning] = "再度　入力してください。"
     end
   end
   
@@ -47,8 +47,10 @@ class UsersController < ApplicationController
   end
   
   def me?
-     if session[:user_id].to_i != params[:id].to_i
+     #if session[:user_id].to_i != params[:id].to_i
+     if current_user != @user
       redirect_to root_path
+      flash[:danger] = "ログインしてください。"
      end
   end 
 end
