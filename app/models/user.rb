@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, length: {maximum: 20 }, format: { with: /\A[a-z0-9]+\z/i }
+  validates :password, length: {maximum: 20 }, format: { with: /\A[a-z0-9]+\z/i,allow_blank: true }
   validates :area, length: { maximum: 20 }, on: :update
   validates :url, on: :update, format: { with: /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix,allow_blank: true }
   #VALID_URL_REGEX = /\A#{URI::regexp(%w(http https))}\z/
