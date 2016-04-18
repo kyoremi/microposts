@@ -20,6 +20,11 @@
       <%= f.label :self_introduction %>
       <%= f.text_area :self_introduction, size:"4×4", class: 'form-control' %>
 
+      <%= f.label :password_reset %>
+      <%= f.text_field :password, class: 'form-control' %>
+      
+      <%= f.label :password_confirmation %>
+      <%= f.text_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
     <% end %>
