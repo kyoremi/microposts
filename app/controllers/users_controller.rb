@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def me?
      #if session[:user_id].to_i != params[:id].to_i
      if current_user != @user
-      redirect_to root_path
+      redirect_to login_path
       flash[:danger] = "ログインしてください。"
      end
   end 

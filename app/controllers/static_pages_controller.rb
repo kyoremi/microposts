@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
-  def home
-    @user=User.new
-  end
+   before_action :logged_in_user
+   
+ def home
+ end
 end
