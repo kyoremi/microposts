@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  def index
-    @users=User.all
+  def index #ヘッダーのusers
+   @user = User.find(params[:id])
   end
   
   def show 
@@ -20,6 +20,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def followings  #@usersはユーザーのフォローしたユーザー
+    @user = User.find(params[:id])
+    @users = @user.following_users
+    #render 'show_follow'
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.follower_users
+    #render 'show_follow'
+  end
+  
   private
 
   def user_params

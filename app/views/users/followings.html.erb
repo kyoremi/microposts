@@ -1,0 +1,12 @@
+<h1>フォロー (<%= @users.count %>)</h1>
+<ul>
+<% @users.each do |user| %>
+ <li> <%= gravatar_for user %> </li>
+ <li> <%= user.name %></li>   
+ <li> 
+    <%= form_for(current_user.following_relationships.find_by(followed_id: @user.id) html: { method: :delete }, remote: true) do |f| %>
+    <%= f.submit "Unfollow", class: "btn" %>
+    <% end %>
+ </li>
+<% end %>
+</ul>

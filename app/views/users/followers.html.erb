@@ -1,0 +1,7 @@
+<h1>フォロワー (<%= @users.count %>)</h1>
+<ul>
+<% @users.each do |user| %>
+ <li> <%= gravatar_for user %> </li>
+ <li> <%= user.name %></li>    
+<% end %>
+</ul>
