@@ -4,8 +4,10 @@
      <h1>
        <%= gravatar_for @user %>
        <%= @user.name %>
-       <%= link_to "followings", followings_user_path(@user) %>
-       <%= link_to "followers", followers_user_path(@user) %>
+        <div class="link">
+         <%= link_to "followings", followings_user_path(@user) %>
+         <%= link_to "followers", followers_user_path(@user) %>
+        </div>
      </h1>
     </section>
   </aside>
@@ -17,5 +19,11 @@
         <%= render @microposts %>
       </ol>
     <% end %>
+    <h2>プロフィール画面</h2>
+    <p>名前:<%= @user.name %></p>
+    <p>Eメールアドレス:<%= @user.email %></p>
+    <p>出身:<%= @user.area %></p>
+    <p>サイト:<%= @user.url %></p>
+    <p>自己紹介:<%= @user.self_introduction %></p>
   </div>
 </div>

@@ -1,7 +1,32 @@
-<h1>フォロワー (<%= @users.count %>)</h1>
-<ul>
-<% @users.each do |user| %>
- <li> <%= gravatar_for user %> </li>
- <li> <%= user.name %></li>    
-<% end %>
-</ul>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+     <h1>
+       <%= gravatar_for @user %>
+       <%= @user.name %>
+        <div class="link">
+         <%= link_to "followings", followings_user_path(@user) %>
+         <%= link_to "followers", followers_user_path(@user) %>
+        </div>
+     </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h2>フォロワー(<%= @users.count %>)</h2>
+     <ul class="follow">
+       <% if @users.present? %>
+         <% @users.each do |user| %>
+      <pre>
+        <li> 
+          <%= gravatar_for user %> 
+          <span><%= link_to "#{user.name}", user_path(user) %></span>
+        </li>
+      </pre>
+         <% end %>
+     </ul>
+       <% else %>
+      <p>フォロワーがいません（＞＿＜）</p>
+       <% end %>
+  </div>
+</div>
+ 
